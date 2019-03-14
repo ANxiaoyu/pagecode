@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		window.onmessage=function(e){
+			console.log(e.data); //我爱你
+			e.source.postMessage('我不爱你',e.origin);
+		}
+	</script>
+</body>
+</html>

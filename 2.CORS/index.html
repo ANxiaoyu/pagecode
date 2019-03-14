@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let xhr=new XMLHttpRequest();
+		document.cookie='name=chongqing'; //cookie不能跨域
+		xhr.withCredentials=true; //前端设置是否带cookie;
+		xhr.open('PUT','http://localhost:4000/getData',true);
+		xhr.setRequestHeader('name','chongqing');
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState===4){
+				if((xhr.status>=200 && xhr.status<300 || xhr.status===304)){
+					console.log(xhr.response);
+					//得到响应头，后台需设置Access-Control-Expose-Headers
+					console.log(xhr.getResponseHeader('name'));
+				}
+			}
+		}
+		xhr.send();
+	</script>
+</body>
+</html>

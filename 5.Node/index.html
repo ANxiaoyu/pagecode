@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		//通过代理服务器http://localhost:3000向目标服务器http://localhost:4000请求数据
+
+		$.ajax({
+			url:'htttp://localhost:3000',
+			type:'post',
+			data:{name:'chongqing',password:'123456'},
+			contentType:'application/json;charset=utf-8',
+			success:function(result){
+				console.log(result); //{"title":"fontend","password":"123456"}
+			},
+			error:function(msg){
+				console.log(msg);
+			}
+		})
+	</script>
+</body>
+</html>

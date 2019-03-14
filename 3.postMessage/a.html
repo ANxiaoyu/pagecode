@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--http://localhost:3000/a.html页面向http://localhost:4000/b.html传递“我爱你”，然后后者传回“我不爱你”-->
+
+	<!--等它加载完触发一个事件-->
+	<iframe src="http://localhost:4000/b.html" frameborder="0" id="frame" onload="load()"></iframe> 
+
+	<script>
+		function load(){
+			let frame=document.getElementById('frame');
+			frame.contentWindow.postMessage('我爱你','http://localhost:4000'); //发送数据
+			window.onmessage=function(e){ //接受返回的数据
+				comsole.log(e.data); //我不爱你
+			}
+		}
+	</script>
+</body>
+</html>
